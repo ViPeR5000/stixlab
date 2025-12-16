@@ -1,0 +1,14 @@
+# Ambiente virtual Python
+venv/
+.venv/
+env/
+ENV/
+
+# Ficheiros gerados pelo Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ficheiros de sistema
+.DS_Store
+Thumbs.db
