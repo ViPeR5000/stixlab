@@ -62,8 +62,7 @@ Build Executavel disponivel em (dist/STIX_2.1_Helper.exe)
 
 ```bash
 pip install customtkinter
-# ou
-pip install -r requirements.txt
+pip install stix2-validator
 ```
 
 As restantes bibliotecas (`uuid`, `json`, `datetime`, `tkinter`) fazem parte da **biblioteca padrão do Python**.
@@ -72,11 +71,15 @@ As restantes bibliotecas (`uuid`, `json`, `datetime`, `tkinter`) fazem parte da 
 
 ## 🇵🇹 Como usar
 
-1. Clonar o repositório:
+1. Clonar o repositório + venv + instalar requirements.txt :
 
 ```bash
 git clone https://github.com/brunomac69/stixlab.git
 cd stixlab
+python -m venv venv
+Windows: venv\Scripts\activate
+Linux: source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 2. Certificar que o script principal se chama `main.py` (ou ajustar o nome conforme necessário).
@@ -153,15 +156,23 @@ The tool also allows creating **STIX bundles**, adding multiple objects, and exp
 
 ```bash
 pip install customtkinter
+pip install stix2-validator
+ or
+pip install -r requirements.txt
+
 ```
 
 ---
 
-## 🇬🇧 How to Run
+## 🇬🇧 How to Clone + venv + Requirements + Run
 
 ```bash
 git clone https://github.com/brunomac69/stixlab.git
 cd stixlab
+python -m venv venv
+Windows: venv\Scripts\activate
+Linux: source venv/bin/activate
+pip install -r requirements.txt
 python main.py
 ```
 
