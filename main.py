@@ -1,3 +1,4 @@
+import webbrowser
 import customtkinter as ctk
 from stix2validator import validate_instance
 from tkinter import StringVar, messagebox, filedialog
@@ -74,6 +75,9 @@ def default_value(field: str, obj_type: str):
             "government",
             "Opções::aerospace,automotive,chemical,commercial,communications,construction,defense,education,energy,entertainment,financial-services,government,healthcare,hospitality-leisure,infrastructure,insurance,manufacturing,mining,non-profit,pharmaceuticals,retail,technology,telecommunications,transportation,utilities"
         ]
+
+    if field == "relationship_type":
+        return "uses  # opções: uses,indicates,targets,mitigates,exploits,delivers,hosts,controls,authored-by,attributed-to,located-at,communicates-with,consists-of,compromises,variant-of,duplicate-of,derived-from,related-to"
 
     if field == "tool_types":
         return [
@@ -684,6 +688,9 @@ def validate_external_file():
         "Validação STIX (Ficheiro Externo)",
         _format_validation_result(result)
 )
+    
+def open_stix_visualizer_site():
+    webbrowser.open("https://oasis-open.github.io/cti-stix-visualization/")
 
 # =========================
 # UI layout
@@ -718,9 +725,11 @@ object_combo = ctk.CTkComboBox(
 )
 object_combo.pack(side="left", padx=10)
 
+#Abrir site STIX Visualizer
+ctk.CTkButton(top_frame, text="STIX Visualizer",command=open_stix_visualizer_site).pack(side="left", padx=5)
+
 # ---- Tema (Dark / Light) ----
 #ctk.CTkLabel(top_frame, text="Tema").pack(side="right", padx=(5, 5))
-
 theme_combo = ctk.CTkComboBox(
     top_frame,
     values=["Dark", "Light", "System"],
@@ -752,6 +761,7 @@ optional_text.pack(fill="both", expand=True, padx=5, pady=5)
 
 bottom_frame = ctk.CTkFrame(app)
 bottom_frame.pack(fill="x", padx=20, pady=10)
+
 
 ctk.CTkButton(bottom_frame, text="Criar Bundle (novo)", command=create_new_bundle).pack(side="left", padx=5)
 ctk.CTkButton(bottom_frame, text="Adicionar ao Bundle", command=add_to_bundle).pack(side="left", padx=5)
