@@ -5,6 +5,8 @@ from tkinter import StringVar, messagebox, filedialog
 from datetime import datetime, timezone
 import uuid
 import json
+import sys
+import argparse
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
@@ -823,8 +825,45 @@ def validate_external_file():
     messagebox.showinfo("Validação STIX (Ficheiro Externo)",_format_validation_result(result))
 
 # =========================
+# CLI Argument Parsing
+# =========================
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="STIX 2.1 Helper & Validator")
+    parser.add_argument("-v", "--validate", metavar="FILE", help="Validar um ficheiro STIX (.json) e sair")
+    return parser.parse_args()
+
+# =========================
 # UI layout
 # =========================
+
+if __name__ == "__main__":
+    args = parse_args()
+
+    if args.validate:
+        # Modo CLI: Valida e sai
+        print(f"Validando ficheiro: {args.validate} ...\n")
+        try:
+            with open(args.validate, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            
+            # Reutiliza a lógica de formatação existente, mas imprime na consola
+            # validation_instance vem do stix2validator
+            result = validate_instance(data)
+            print(_format_validation_result(result))
+            
+        except FileNotFoundError:
+            print(f"❌ Erro: Ficheiro não encontrado: {args.validate}")
+        except json.JSONDecodeError as e:
+            print(f"❌ Erro: JSON inválido:\n{e}")
+        except Exception as e:
+            print(f"❌ Erro inesperado: {e}")
+        
+        # Encerra sem abrir a GUI
+        sys.exit(0)
+
+    # Modo GUI (comportamento normal se não houver argumentos de CLI)
+
 
 app = ctk.CTk()
 app.title("STIX 2.1 Helper – Ensino (JSON pronto a copiar) - C-Academy - Curso PMD#1 - Bruno Cardoso (open-source)")

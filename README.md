@@ -102,6 +102,14 @@ python main.py
 - **Ver Bundle** – abre uma nova janela com o bundle em JSON
 - **Exportar Bundle JSON** – guarda o bundle num ficheiro `.json`
 
+5. **Modo CLI (Linha de Comandos)**:
+   - Para validar um ficheiro STIX existente sem abrir a interface gráfica:
+   ```bash
+   python main.py -v <caminho_para_ficheiro.json>
+   # ou
+   python main.py --validate <caminho_para_ficheiro.json>
+   ```
+
 ---
 
 ## 🇵🇹 Exemplo de objeto `malware`
@@ -145,6 +153,7 @@ The tool also allows creating **STIX bundles**, adding multiple objects, and exp
 - Automatic UUID-based IDs and ISO 8601 UTC timestamps
 - Educational default values for optional properties
 - STIX 2.1 bundle creation, visualization and export
+- **CLI Mode for Validation**: Validate STIX files directly from the command line (`python main.py -v file.json`)
 - Easily extensible codebase
 
 ---
