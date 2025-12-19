@@ -110,6 +110,12 @@ python main.py
    python main.py --validate <caminho_para_ficheiro.json>
    ```
 
+   - Para gerar uma imagem (grafo) do ficheiro STIX:
+   ```bash
+   python main.py -i <caminho_para_ficheiro.json>
+   # Gera <caminho_para_ficheiro.json>.png
+   ```
+
 ---
 
 ## 🇵🇹 Exemplo de objeto `malware`
@@ -154,6 +160,7 @@ The tool also allows creating **STIX bundles**, adding multiple objects, and exp
 - Educational default values for optional properties
 - STIX 2.1 bundle creation, visualization and export
 - **CLI Mode for Validation**: Validate STIX files directly from the command line (`python main.py -v file.json`)
+- **CLI Graph Visualization**: Generate a PNG image of your STIX objects (`python main.py -i file.json`)
 - Easily extensible codebase
 
 ---
