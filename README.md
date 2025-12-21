@@ -102,8 +102,8 @@ python main.py
 - **Ver Bundle** – abre uma nova janela com o bundle em JSON
 - **Exportar Bundle JSON** – guarda o bundle num ficheiro `.json`
 
-5. **Modo CLI (Linha de Comandos)**:
-   - Para validar um ficheiro STIX existente sem abrir a interface gráfica:
+6. Modo CLI (Linha de Comandos):
+  - Para validar um ficheiro STIX existente sem abrir a interface gráfica:
    ```bash
    python main.py -v <caminho_para_ficheiro.json>
    # ou
